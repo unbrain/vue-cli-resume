@@ -1,23 +1,33 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <Topbar/>
+    <main>
+      <Editarea/>
+      <Preview/>
+    </main>
   </div>
 </template>
 
 <script>
+import Topbar from './components/Topbar'
+import Editare from './components/Editarea'
+import Preview from './components/Preview'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Topbar,
+    Editare,
+    Preview
+  }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
 }
 </style>
