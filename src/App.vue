@@ -30,12 +30,15 @@ export default {
   flex-direction: column;
   > main {
     display: flex;
-    flex-grow: 1;
+    flex: 1;
     justify-content: center;
     margin: 16px;
+    
     > div {
       box-shadow: 0px 0px 20px -4px rgba(0, 0, 0, 0.25);
       margin-left: 16px;
+      border-radius: 5px;
+      overflow: hidden;
     }
   }
 }
