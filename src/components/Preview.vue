@@ -1,14 +1,22 @@
 <template>
-  <div id="">
+  <div id="Preview">
+    <div class="items">
+      <ol>
+
+        
+      </ol>
+    </div>
+    <div class="contents"></div>
   </div>
 </template>
 
 <script>
 </script>
 
-<style >
-#s {
+<style lang="scss">
+#Preview {
   display: flex;
-  justify-content: space-between;
+  height: inherit;
+  width: 55%;
 }
 </style>

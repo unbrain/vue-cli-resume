@@ -1,9 +1,13 @@
 <template>
   <div id="Topbar">
-      <p>resume<p>
+      <p>
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-cv"></use>
+        </svg>  
+      <p>
       <div>
-        <button>注册</button>
-        <button>登录</button>
+        <el-button type="primary" plain>注册</el-button>
+        <el-button type="success" plain>登录</el-button>
       </div>
   </div>
 </template>
@@ -16,11 +20,14 @@
   font-size: 14px;
   display: flex;
   justify-content: space-between;
-  box-shadow: 0px 5px 26px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 5px 20px -4px rgba(0, 0, 0, 0.75);
   z-index: 1;
-  > p,
-  div {
+  > div {
     padding: 16px;
+  }
+  > p {
+    padding: 16px 32px;
+    font-size: 32px;
   }
 }
 </style>
