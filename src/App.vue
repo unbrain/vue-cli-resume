@@ -12,6 +12,10 @@
 import Topbar from './components/Topbar'
 import Editarea from './components/Editarea'
 import Preview from './components/Preview'
+import {
+  WiredButton,
+  WiredInput
+} from "wired-elements"
 
 export default {
   name: 'App',
