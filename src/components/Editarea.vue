@@ -27,7 +27,8 @@
           </el-form>
         </li>
         <li :class="{active:currTab === 1}">
-          <h1>工作经历</h1>
+          <edit-arr :items="companys" :title="'工作经历'" :labels="{name:'公司名', experience:'主要经历'}"></edit-arr>
+          <!-- <h1>工作经历</h1>
           <el-form v-for="(company, index) in companys" :key="company.id">
             <div>
               <svg class="icon" aria-hidden="true" @click="removeCompany(index)">
@@ -44,7 +45,7 @@
           </el-form>
           <svg class="icon add" aria-hidden="true" @click="addCompany()">
             <use xlink:href="#icon-add"></use>
-          </svg>
+          </svg> -->
         </li>
         <li :class="{active:currTab === 2}">
           <h1>学习经历</h1>
@@ -135,7 +136,9 @@
 </template>
 
 <script>
+import EditArr from './EditArr'
 export default {
+  components: { EditArr },
   data() {
     return {
       currTab: 0,
