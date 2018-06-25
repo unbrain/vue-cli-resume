@@ -16,118 +16,37 @@
           <h1>身份信息</h1>
           <el-form>
             <el-form-item label="姓名">
-              <el-input v-model="idcard.name"></el-input>
+              <el-input v-model="resume.idcard.name"></el-input>
             </el-form-item>
             <el-form-item label="性别">
-              <el-input v-model="idcard.gender"></el-input>
+              <el-input v-model="resume.idcard.gender"></el-input>
             </el-form-item>
             <el-form-item label="年龄">
-              <el-input v-model="idcard.age"></el-input>
+              <el-input v-model="resume.idcard.age"></el-input>
             </el-form-item>
           </el-form>
         </li>
         <li :class="{active:currTab === 1}">
-          <edit-arr :items="companys" :title="'工作经历'" :labels="{name:'公司名', experience:'主要经历'}"></edit-arr>
-          <!-- <h1>工作经历</h1>
-          <el-form v-for="(company, index) in companys" :key="company.id">
-            <div>
-              <svg class="icon" aria-hidden="true" @click="removeCompany(index)">
-                <use xlink:href="#icon-remove"></use>
-              </svg>
-            </div>
-            <el-form-item label="公司名">
-              <el-input v-model="company.name"></el-input>
-            </el-form-item>
-            <el-form-item label="主要经历">
-              <el-input v-model="company.experience"></el-input>
-            </el-form-item>
-            <hr>
-          </el-form>
-          <svg class="icon add" aria-hidden="true" @click="addCompany()">
-            <use xlink:href="#icon-add"></use>
-          </svg> -->
+          <edit-arr :items="resume.companys" :title="'工作经历'" :labels="{name:'公司名', experience:'主要经历'}"></edit-arr>
         </li>
         <li :class="{active:currTab === 2}">
-          <h1>学习经历</h1>
-          <el-form v-for="school,index in schools" :key="school.id">
-            <div>
-              <svg class="icon" aria-hidden="true" @click="removeSchool(index)">
-                <use xlink:href="#icon-remove"></use>
-              </svg>
-            </div>
-            <el-form-item label="学校名">
-              <el-input v-model="school.name"></el-input>
-            </el-form-item>
-            <el-form-item label="主要经历">
-              <el-input v-model="school.experience"></el-input>
-            </el-form-item>
-            <hr>
-          </el-form>
-          <svg class="icon add" aria-hidden="true" @click="addSchool()">
-            <use xlink:href="#icon-add"></use>
-          </svg>
+          <edit-arr :items="resume.schools" :title="'学习经历'" :labels="{name:'学校名', experience:'主要经历'}"></edit-arr>
         </li>
         <li :class="{active:currTab === 3}">
-          <h1>项目经历</h1>
-          <el-form v-for="(work, index) in works" :key="work.id">
-            <div>
-              <svg class="icon" aria-hidden="true" @click="removeWork(index)">
-                <use xlink:href="#icon-remove"></use>
-              </svg>
-            </div>
-            <el-form-item label="项目名">
-              <el-input v-model="work.name"></el-input>
-            </el-form-item>
-            <el-form-item label="技术栈">
-              <el-input v-model="work.skills"></el-input>
-            </el-form-item>
-            <el-form-item label="项目描述">
-              <el-input v-model="work.description"></el-input>
-            </el-form-item>
-            <hr>
-          </el-form>
-          <svg class="icon add" aria-hidden="true" @click="addWork()">
-            <use xlink:href="#icon-add"></use>
-          </svg>
+          <edit-arr :items="resume.works" :title="'项目经历'" :labels="{name:'项目名', skills:'技术栈', description: '项目描述'}"></edit-arr>
         </li>
         <li :class="{active:currTab === 4}">
-          <h1>获奖情况</h1>
-          <el-form v-for="honor,index in honors" :key="honor.id">
-            <div>
-              <svg class="icon" aria-hidden="true" @click="removeHonor(index)">
-                <use xlink:href="#icon-remove"></use>
-              </svg>
-            </div>
-            <el-form-item label="时间">
-              <el-input v-model="honor.year"></el-input>
-            </el-form-item>
-            <el-form-item label="奖项名字">
-              <el-input v-model="honor.name"></el-input>
-            </el-form-item>
-            <hr>
-          </el-form>
-          <svg class="icon add" aria-hidden="true" @click="addHonor()">
-            <use xlink:href="#icon-add"></use>
-          </svg>
+          <edit-arr :items="resume.honors" :title="'获奖情况'" :labels="{name:'奖项名字', year: '时间'}"></edit-arr>
         </li>
         <li :class="{active:currTab === 5}">
           <h1>联系方式</h1>
-          <el-form v-for="phone,index in phones" :key="phone.id">
-            <div>
-              <svg class="icon" aria-hidden="true" @click="removePhone(index)">
-                <use xlink:href="#icon-remove"></use>
-              </svg>
-
-            </div>
+          <el-form v-for="phone,index in resume.phones" :key="phone.id">
             <el-tag>方式{{index+1}}</el-tag>
             <el-input v-model="phone.name"></el-input>
             <el-input v-model="phone.number"></el-input>
 
             <hr>
           </el-form>
-          <svg class="icon add" aria-hidden="true" @click="addPhone()">
-            <use xlink:href="#icon-add"></use>
-          </svg>
         </li>
       </ol>
 
@@ -143,48 +62,26 @@ export default {
     return {
       currTab: 0,
       icons: ['idcard', 'company', 'books', 'works', 'honor', 'phone'],
-      idcard: {
-        name: '',
-        gender: '',
-        age: ''
-      },
-      companys: [{ name: '', experience: '' }],
-      schools: [{ name: '', experience: '' }],
-      works: [{ name: '', skills: '', description: '' }],
-      honors: [{ name: '', year: '' }],
-      phones: [
-        { name: '手机', number: '' },
-        { name: '微信', number: '' },
-        { name: 'E-mail', number: '' },
-        { name: 'GitHub', number: '' }
-      ]
+      resume: {
+        idcard: {
+          name: '',
+          gender: '',
+          age: ''
+        },
+        companys: [{ name: '', experience: '' }],
+        schools: [{ name: '', experience: '' }],
+        works: [{ name: '', skills: '', description: '' }],
+        honors: [{ name: '', year: '' }],
+        phones: [
+          { name: '手机', number: '' },
+          { name: '微信', number: '' },
+          { name: 'E-mail', number: '' },
+          { name: 'GitHub', number: '' }
+        ]
+      }
     }
   },
   methods: {
-    addCompany() {
-      this.companys.push({ name: '', experience: '' })
-    },
-    removeCompany(index) {
-      this.companys.splice(index, 1)
-    },
-    addSchool() {
-      this.schools.push({ name: '', experience: '' })
-    },
-    removeSchool(index) {
-      this.schools.splice(index, 1)
-    },
-    addWork() {
-      this.works.push({ name: '', skills: '', description: '' })
-    },
-    removeWork(index) {
-      this.works.splice(index, 1)
-    },
-    addHonor() {
-      this.honors.push({ name: '', year: '' })
-    },
-    removeHonor(index) {
-      this.honors.splice(index, 1)
-    },
     addPhone() {
       this.phones.push({ name: '手机', number: '' })
     },
@@ -221,6 +118,9 @@ export default {
     flex: 1;
     padding-right: 16px;
     overflow: auto;
+    hr {
+      border: 1px solid #eaecef;
+    }
     li {
       position: relative;
       display: none;
@@ -232,7 +132,7 @@ export default {
         padding: 8px 0;
         position: relative;
         .icon {
-          bottom: -8px;
+          bottom: -16px;
         }
       }
     }
@@ -242,10 +142,6 @@ export default {
       height: 20px;
       position: absolute;
       right: 0;
-    }
-    .add {
-      right: 24px;
-      bottom: -4px;
     }
   }
 }

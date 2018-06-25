@@ -1,7 +1,6 @@
 <template>
-  <div>
+  <div class="editArr">
     <h1>{{title}}</h1>
-    {{keys}}
     <el-form v-for="(item, index) in items" :key="index">
       <div>
         <svg class="icon" aria-hidden="true" @click="removeitem(index)">
@@ -22,20 +21,20 @@
 <script>
 export default {
   props: ['items', 'title', 'labels'],
-  computed:{
-    keys(){
+  computed: {
+    keys() {
       return Object.keys(this.items[0])
     }
   },
   methods: {
-    additem(){
+    additem() {
       let empty = {}
-      this.keys.map(key, ()=>{
+      this.keys.map(key => {
         empty[key] = ''
       })
       this.items.push(empty)
     },
-    removeitem(index){
+    removeitem(index) {
       this.items.splice(index, 1)
     }
   },
@@ -44,3 +43,4 @@ export default {
   }
 }
 </script>
+
