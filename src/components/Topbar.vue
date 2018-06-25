@@ -23,10 +23,12 @@
   box-shadow: 0px 5px 20px -4px rgba(0, 0, 0, 0.75);
   z-index: 1;
   wired-button {
+    fill: white;
     padding: 8px 16px;
     margin: 0 16px;
     &:hover {
-      background: #99D67A;
+      background: #363636;
+      color: #ffffff;
       transition: 0.3s;
     }
   }

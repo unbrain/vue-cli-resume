@@ -1,5 +1,5 @@
 <template>
-  <div id="Editarea">
+  <div id="Editarea" v-show="editshow">
     <div class="items">
       <ol>
         <li v-for="(item , index) in icons" :class="{active:currTab === index}" @click="currTab = index">
@@ -15,25 +15,28 @@
         <li :class="{active:currTab === 0}">
           <h1>身份信息</h1>
           <el-form>
-            <el-form-item label="姓名">
+            <el-form-item label="name">
               <el-input v-model="resume.idcard.name"></el-input>
             </el-form-item>
-            <el-form-item label="性别">
+            <el-form-item label="gender">
               <el-input v-model="resume.idcard.gender"></el-input>
             </el-form-item>
-            <el-form-item label="年龄">
+            <el-form-item label="age">
               <el-input v-model="resume.idcard.age"></el-input>
+            </el-form-item>
+            <el-form-item label="Job">
+              <el-input v-model="resume.idcard.job"></el-input>
             </el-form-item>
           </el-form>
         </li>
         <li :class="{active:currTab === 1}">
-          <edit-arr :items="resume.companys" :title="'工作经历'" :labels="{name:'公司名', experience:'主要经历'}"></edit-arr>
+          <edit-arr :items="resume.companys" :title="'工作经历'" :labels="{job: '职位', when: '时间',experience:'主要经历'}"></edit-arr>
         </li>
         <li :class="{active:currTab === 2}">
-          <edit-arr :items="resume.schools" :title="'学习经历'" :labels="{name:'学校名', experience:'主要经历'}"></edit-arr>
+          <edit-arr :items="resume.schools" :title="'学习经历'" :labels="{name:'学校名', when: '时间', professional: '专业',experience:'主要经历'}"></edit-arr>
         </li>
         <li :class="{active:currTab === 3}">
-          <edit-arr :items="resume.works" :title="'项目经历'" :labels="{name:'项目名', skills:'技术栈', description: '项目描述'}"></edit-arr>
+          <edit-arr :items="resume.projects" :title="'项目经历'" :labels="{name:'项目名', skills:'技术栈', description: '项目描述'}"></edit-arr>
         </li>
         <li :class="{active:currTab === 4}">
           <edit-arr :items="resume.honors" :title="'获奖情况'" :labels="{name:'奖项名字', year: '时间'}"></edit-arr>
@@ -50,19 +53,19 @@
       </ol>
 
     </div>
+
   </div>
 </template>
 
 <script>
 import EditArr from './EditArr'
 export default {
-  props:['resume'],
+  props: ['resume', 'editshow'],
   components: { EditArr },
   data() {
     return {
       currTab: 0,
       icons: ['idcard', 'company', 'books', 'works', 'honor', 'phone'],
-      
     }
   },
   methods: {
@@ -78,21 +81,23 @@ export default {
 
 <style lang="scss">
 #Editarea {
+  left: 0;
+  z-index: 1;
   display: flex;
-  width: 30%;
+  width: 25%;
   .items {
-    background: #f0f9eb;
+    background: #363636;
     box-shadow: 3px 0px 28px -6px rgba(0, 0, 0, 0.59);
     li {
       &.active {
-        background: #67c23a;
+        background: #fff;
         .icon {
-          fill: #ffffff;
+          fill: #777;
         }
       }
-      padding: 24px;
+      padding: 16px;
       .icon {
-        fill: #67c23a;
+        fill: #fff;
         width: 2em;
         height: 2em;
       }
@@ -121,7 +126,7 @@ export default {
       }
     }
     .icon {
-      fill: #67c23a;
+      fill: #f8b42b;
       width: 20px;
       height: 20px;
       position: absolute;
