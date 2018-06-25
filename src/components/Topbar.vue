@@ -27,7 +27,7 @@
     margin: 0 16px;
     &:hover {
       background: #99D67A;
-      transition: 0.3s
+      transition: 0.3s;
     }
   }
   > div {

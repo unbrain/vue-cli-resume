@@ -12,10 +12,7 @@
 import Topbar from './components/Topbar'
 import Editarea from './components/Editarea'
 import Preview from './components/Preview'
-import {
-  WiredButton,
-  WiredInput
-} from "wired-elements"
+import { WiredButton, WiredInput } from 'wired-elements'
 
 export default {
   name: 'App',
@@ -33,14 +30,18 @@ export default {
   display: flex;
   flex-direction: column;
   > main {
+    min-width: 1024px;
+    max-width: 1440px;
+    width: 100%;
     display: flex;
+    flex-direction: row;
+    margin-top: 16px;
+    margin-bottom: 16px;
     flex: 1;
     justify-content: center;
-    margin: 16px;
-    
+    align-self: center;
     > div {
       box-shadow: 0px 0px 20px -4px rgba(0, 0, 0, 0.25);
-      margin-left: 16px;
       border-radius: 5px;
       overflow: hidden;
     }

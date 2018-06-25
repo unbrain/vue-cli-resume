@@ -18,5 +18,7 @@
   display: flex;
   height: inherit;
   width: 55%;
+  margin-left: 16px;
+  flex: 1;
 }
 </style>
