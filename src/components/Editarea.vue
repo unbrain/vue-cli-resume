@@ -44,7 +44,6 @@
             <el-tag>方式{{index+1}}</el-tag>
             <el-input v-model="phone.name"></el-input>
             <el-input v-model="phone.number"></el-input>
-
             <hr>
           </el-form>
         </li>
@@ -57,37 +56,22 @@
 <script>
 import EditArr from './EditArr'
 export default {
+  props:['resume'],
   components: { EditArr },
   data() {
     return {
       currTab: 0,
       icons: ['idcard', 'company', 'books', 'works', 'honor', 'phone'],
-      resume: {
-        idcard: {
-          name: '',
-          gender: '',
-          age: ''
-        },
-        companys: [{ name: '', experience: '' }],
-        schools: [{ name: '', experience: '' }],
-        works: [{ name: '', skills: '', description: '' }],
-        honors: [{ name: '', year: '' }],
-        phones: [
-          { name: '手机', number: '' },
-          { name: '微信', number: '' },
-          { name: 'E-mail', number: '' },
-          { name: 'GitHub', number: '' }
-        ]
-      }
+      
     }
   },
   methods: {
-    addPhone() {
-      this.phones.push({ name: '手机', number: '' })
-    },
-    removePhone(index) {
-      this.phones.splice(index, 1)
-    }
+    // addPhone() {
+    //   this.phones.push({ name: '手机', number: '' })
+    // },
+    // removePhone(index) {
+    //   this.phones.splice(index, 1)
+    // }
   }
 }
 </script>

@@ -2,8 +2,8 @@
   <div id="app">
     <Topbar/>
     <main>
-      <Editarea/>
-      <Preview/>
+      <Editarea :resume="resume" />
+      <Preview :resume="resume" />
     </main>
   </div>
 </template>
@@ -20,6 +20,27 @@ export default {
     Topbar,
     Editarea,
     Preview
+  },
+  data() {
+    return {
+      resume: {
+        idcard: {
+          name: '',
+          gender: '',
+          age: ''
+        },
+        companys: [{ name: '', experience: '' }],
+        schools: [{ name: '', experience: '' }],
+        works: [{ name: '', skills: '', description: '' }],
+        honors: [{ name: '', year: '' }],
+        phones: [
+          { name: '手机', number: '' },
+          { name: '微信', number: '' },
+          { name: 'E-mail', number: '' },
+          { name: 'GitHub', number: '' }
+        ]
+      }
+    }
   }
 }
 </script>
