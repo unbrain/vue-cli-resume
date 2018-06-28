@@ -4,15 +4,29 @@
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-cv"></use>
       </svg>
-      <p>
-        <div>
-          <wired-button elevation="3">登录</wired-button>
-          <wired-button elevation="3">注册</wired-button>
-        </div>
+    </p>
+    <div>
+      <wired-button elevation="3">预览</wired-button>
+      <wired-button elevation="3" @click="print()">打印</wired-button>
+    </div>
   </div>
 </template>
 
 <script>
+export default {
+
+  methods: {
+    // addPhone() {
+    //   this.phones.push({ name: '手机', number: '' })
+    // },
+    // removePhone(index) {
+    //   this.phones.splice(index, 1)
+    // }
+    print(){
+      window.print()
+    }
+  }
+}
 </script>
 
 <style lang="scss">

@@ -1,8 +1,8 @@
 <template>
-  <div id="Editarea" v-show="editshow">
+  <div id="Editarea" >
     <div class="items">
       <ol>
-        <li v-for="(item , index) in icons" :class="{active:currTab === index}" @click="currTab = index">
+        <li v-for="(item , index) in icons"  @click="currTab = index">
           <svg class="icon" aria-hidden="true">
             <use :xlink:href="`#icon-${icons[index]}`"></use>
           </svg>
@@ -60,7 +60,7 @@
 <script>
 import EditArr from './EditArr'
 export default {
-  props: ['resume', 'editshow'],
+  props: ['resume', ],
   components: { EditArr },
   data() {
     return {
@@ -69,21 +69,16 @@ export default {
     }
   },
   methods: {
-    // addPhone() {
-    //   this.phones.push({ name: '手机', number: '' })
-    // },
-    // removePhone(index) {
-    //   this.phones.splice(index, 1)
-    // }
+
   }
 }
 </script>
 
 <style lang="scss">
 #Editarea {
-  left: 0;
-  z-index: 1;
   display: flex;
+  height: 80vh;
+  overflow:auto;
   width: 25%;
   .items {
     background: #363636;

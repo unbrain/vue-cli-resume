@@ -1,15 +1,17 @@
 <template>
-  <div id="app">
+  <div id="app" class="clearfix">
     <Topbar/>
+
     <main>
-      <Editarea :resume="resume" :editshow="editshow"/>
+      <Editarea :resume="resume" :class="{show:editshow,unshow:!editshow}" />
+
       <Preview :resume="resume" />
     </main>
     <div class="lar">
       <svg class="icon" aria-hidden="true" v-show="editshow" @click="editshow = !editshow">
         <use xlink:href="#icon-left"></use>
       </svg>
-      <svg class="icon" aria-hidden="true" v-show="!editshow" @click="editshow = !editshow" >
+      <svg class="icon" aria-hidden="true" v-show="!editshow" @click="editshow = !editshow">
         <use xlink:href="#icon-right"></use>
       </svg>
     </div>
@@ -32,7 +34,7 @@ export default {
   },
   data() {
     return {
-      editshow:false,
+      editshow: false,
       resume: {
         idcard: {
           name: 'Bruno Mars',
@@ -109,7 +111,18 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: 1s;
+
+
+  .show {
+    transition: 2s;
+    opacity: 0;
+    width: 0;
+  }
+  .unshow {
+    transition: 2s;
+    opacity: 1;
+  }
+
   > main {
     min-width: 940px;
     max-width: 1440px;
@@ -127,18 +140,20 @@ export default {
     }
   }
   .lar {
+    z-index: 1;
     padding: 8px;
     border-radius: 2px;
     left: 40px;
     top: 84px;
-    background-color: #fff;
+    border: 1px solid #ccc;
     position: absolute;
     .icon {
       width: 40px;
       height: 40px;
       fill: #363636;
-      box-shadow: 3px 0px 28px -6px rgba(0, 0, 0, 0.59);
     }
+
+      box-shadow: 3px 0px 28px -6px rgba(0, 0, 0, 0.59);
   }
 }
 </style>
